@@ -1,5 +1,6 @@
-package com.example.springlogin1;
+package com.example.springlogin1.controller;
 
+import com.example.springlogin1.service.UserServiceImpl;
 import com.example.springlogin1.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

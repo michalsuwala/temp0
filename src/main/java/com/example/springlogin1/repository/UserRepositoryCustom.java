@@ -1,4 +1,4 @@
-package com.example.springlogin1;
+package com.example.springlogin1.repository;
 
 import com.example.springlogin1.model.User;
 import org.springframework.data.repository.Repository;

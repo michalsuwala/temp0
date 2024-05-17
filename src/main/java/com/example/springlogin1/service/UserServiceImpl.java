@@ -1,9 +1,10 @@
-package com.example.springlogin1;
+package com.example.springlogin1.service;
 
 import com.example.springlogin1.model.Role;
 import com.example.springlogin1.model.User;
 import com.example.springlogin1.repository.RoleRepository;
 import com.example.springlogin1.repository.UserRepositoryCustomImpl;
+import com.example.springlogin1.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

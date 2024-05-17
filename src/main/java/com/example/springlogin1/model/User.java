@@ -1,5 +1,6 @@
-package com.example.springlogin1;
+package com.example.springlogin1.model;
 
+import com.example.springlogin1.model.Role;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

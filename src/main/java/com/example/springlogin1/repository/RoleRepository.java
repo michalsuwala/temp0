@@ -1,4 +1,4 @@
-package com.example.springlogin1;
+package com.example.springlogin1.repository;
 
 import com.example.springlogin1.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,5 +1,6 @@
-package com.example.springlogin1;
+package com.example.springlogin1.security;
 
+import com.example.springlogin1.CustomLoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

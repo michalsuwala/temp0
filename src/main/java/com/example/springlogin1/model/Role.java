@@ -1,4 +1,4 @@
-package com.example.springlogin1;
+package com.example.springlogin1.model;
 
 import jakarta.persistence.*;
 

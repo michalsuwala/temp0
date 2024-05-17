@@ -1,6 +1,7 @@
-package com.example.springlogin1;
+package com.example.springlogin1.repository;
 
 import com.example.springlogin1.model.User;
+import com.example.springlogin1.repository.UserRepositoryCustom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
