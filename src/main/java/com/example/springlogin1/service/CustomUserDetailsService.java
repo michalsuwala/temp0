@@ -1,6 +1,10 @@
 package com.example.springlogin1;
 
+import com.example.springlogin1.model.Role;
+import com.example.springlogin1.model.User;
+import com.example.springlogin1.repository.UserRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +19,8 @@ import java.util.stream.Collectors;
 public class CustomUserDetailsService implements UserDetailsService
 {
     @Autowired
-    private UserRepository userRepository;
+    @Qualifier("UserRepositoryCustomImpl")
+    private UserRepositoryCustom userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
