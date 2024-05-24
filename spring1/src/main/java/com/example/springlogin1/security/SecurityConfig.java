@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,12 +24,11 @@ import java.io.IOException;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/login", "/register", "/guestbooks").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -37,9 +37,15 @@ public class SecurityConfig {
                         .successHandler(new CustomLoginSuccessHandler())
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll());
+                .csrf(AbstractHttpConfigurer::disable)
+                .logout(logout -> logout.permitAll())
+                .exceptionHandling(config -> config
+                        .authenticationEntryPoint((request, response, authException) ->
+                                response.sendRedirect("/guestbooks"))
+                );
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

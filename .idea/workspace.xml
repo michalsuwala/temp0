@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55a3d52b-f058-4e42-8600-379575111d04" name="Changes" comment="" />
+    <list default="true" id="55a3d52b-f058-4e42-8600-379575111d04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring1/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring1/src/main/java/com/example/springlogin1/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring1/src/main/java/com/example/springlogin1/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring1/src/main/java/com/example/springlogin1/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring1/src/main/java/com/example/springlogin1/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring1/src/main/resources/templates/adminpanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring1/src/main/resources/templates/adminpanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring1/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring1/src/main/resources/templates/home.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +72,6 @@
   </component>
   <component name="RunManager">
     <configuration name="SpringLogin1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="springLogin1" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springlogin1.SpringLogin1Application" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,6 +93,8 @@
       <workItem from="1715587425966" duration="792000" />
       <workItem from="1715778848729" duration="13635000" />
       <workItem from="1715931684540" duration="3896000" />
+      <workItem from="1715936939416" duration="787000" />
+      <workItem from="1716565109648" duration="837000" />
     </task>
     <servers />
   </component>
