@@ -20,6 +20,9 @@ public class OrderService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private BookService bookService;
+
     @Transactional
     public Order submitOrder() {
         User user = userService.getCurrentUser();
@@ -32,11 +35,14 @@ public class OrderService {
             if (cartItem.getQuantity() > cartItem.getBook().getQuantity()) {
                 throw new RuntimeException("Not enough stock available for book: " + cartItem.getBook().getTitle());
             }
+            cartItem.getBook().setQuantity(cartItem.getBook().getQuantity() - cartItem.getQuantity());
             OrderItem orderItem = new OrderItem();
             orderItem.setBook(cartItem.getBook());
             orderItem.setQuantity(cartItem.getQuantity());
             order.getItems().add(orderItem);
+
         }
+
         cart.getItems().clear();
         cartService.saveCart(cart);
         return orderRepository.save(order);
@@ -67,5 +73,28 @@ public class OrderService {
     @Transactional
     public List<Order> getUserOrders(User user) {
         return orderRepository.findByUser(user);
+    }
+
+    @Transactional
+    public void deleteBooksWithZeroQuantity() {
+        List<Book> books = bookService.getAll();
+        for (Book book : books) {
+            if (book.getQuantity() == 0) {
+                // Remove associated OrderItems
+                List<Order> orders = orderRepository.findAll();
+                for (Order order : orders) {
+                    List<OrderItem> orderItems = order.getItems();
+                    orderItems.removeIf(orderItem -> orderItem.getBook().getId() == book.getId());
+                }
+
+                // Save changes to orders
+                for (Order order : orders) {
+                    orderRepository.save(order);
+                }
+
+                // Delete the book
+                bookService.delete(book.getId());
+            }
+        }
     }
 }

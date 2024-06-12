@@ -40,4 +40,14 @@ public class BookService implements IBookService {
     public void delete(int id) {
         this.bookDAO.delete(id);
     }
+
+    @Transactional
+    public void deleteBooksWithZeroQuantity() {
+        List<Book> books = bookDAO.getAll();
+        for (Book book : books) {
+            if (book.getQuantity() == 0) {
+                delete(book.getId());
+            }
+        }
+    }
 }

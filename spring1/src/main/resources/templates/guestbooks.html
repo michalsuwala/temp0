@@ -12,5 +12,8 @@
     <div th:text="${'Ilość: ' + book.quantity}"></div>
   </div>
 </div>
+<form th:action="@{/login}" method="get">
+  <button type="submit">Login</button>
+</form>
 </body>
 </html>

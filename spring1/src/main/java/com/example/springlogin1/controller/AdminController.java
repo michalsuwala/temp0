@@ -22,6 +22,7 @@ public class AdminController {
     OrderService orderService;
     @GetMapping("adminpanel")
     public String adminpanel(Model model) {
+        orderService.deleteBooksWithZeroQuantity();
         model.addAttribute("books", this.bookService.getAll());
         model.addAttribute("orders", this.orderService.getAllOrders());
         return "adminpanel";
