@@ -30,28 +30,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
-    /*@Override
-    @Transactional
-    public User save(User user) {
-        return userRepository.save(user);
-    }*/
-
-    /*@Transactional
-    public String registerUser(User user) {
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return "failure";
-        }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByName("ROLE_USER").orElseGet(() -> {
-            Role newRole = new Role("ROLE_USER");
-            roleRepository.save(newRole);
-            return newRole;
-        });
-        user.getRoles().add(userRole);
-        userRepository.save(user);
-        return "success";
-    }*/
-
     @Transactional
     public String registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
@@ -62,7 +40,6 @@ public class UserServiceImpl implements UserService {
         user.setCart(new Cart());
         Role userRole =
                 roleRepository.findByName("USER").orElse(null);
-        //System.out.println(userRole.getName());
         if (userRole != null) {
             user.getRoles().add(userRole);
         } else {

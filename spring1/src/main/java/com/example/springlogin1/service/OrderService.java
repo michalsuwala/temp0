@@ -40,7 +40,6 @@ public class OrderService {
             orderItem.setBook(cartItem.getBook());
             orderItem.setQuantity(cartItem.getQuantity());
             order.getItems().add(orderItem);
-
         }
 
         cart.getItems().clear();
@@ -80,19 +79,16 @@ public class OrderService {
         List<Book> books = bookService.getAll();
         for (Book book : books) {
             if (book.getQuantity() == 0) {
-                // Remove associated OrderItems
                 List<Order> orders = orderRepository.findAll();
                 for (Order order : orders) {
                     List<OrderItem> orderItems = order.getItems();
                     orderItems.removeIf(orderItem -> orderItem.getBook().getId() == book.getId());
                 }
 
-                // Save changes to orders
                 for (Order order : orders) {
                     orderRepository.save(order);
                 }
 
-                // Delete the book
                 bookService.delete(book.getId());
             }
         }
